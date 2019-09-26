@@ -1,3 +1,6 @@
 .idea
 *.idea
 /idea
+analysis.xlsx
+/log
+/target
