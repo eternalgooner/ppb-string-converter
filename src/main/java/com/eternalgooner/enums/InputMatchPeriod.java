@@ -5,7 +5,7 @@ package com.eternalgooner.enums;
  * @date 27/09/2019
  **/
 
-public enum MatchPeriod {
+public enum InputMatchPeriod {
 
     PM("[PM]"),
     H1("[H1]"),
@@ -19,7 +19,7 @@ public enum MatchPeriod {
         return this.matchPeriod;
     }
 
-    MatchPeriod(String matchPeriod) {
+    InputMatchPeriod(String matchPeriod) {
         this.matchPeriod = matchPeriod;
     }
 }

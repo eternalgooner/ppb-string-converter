@@ -1,10 +1,9 @@
 package com.eternalgooner.app;
 
-import com.eternalgooner.utils.MyFileUtils;
+import com.eternalgooner.utils.CustomFileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -30,7 +29,7 @@ public class StringConverterApp {
     private void continueWithAppFlow(String[] commandLineArgs) {
         //String fileName = commandLineArgs[0];//TODO revert
         String fileName = "C:\\dev\\PPB\\inputs Jr Java Dev coding assessment[9244].txt";
-        boolean isValidFile = MyFileUtils.checkIfValidFile(fileName);
+        boolean isValidFile = CustomFileUtils.checkIfValidFile(fileName);
         if(isValidFile){
             LOGGER.info("valid file has been identified, proceeding to next step");
             streamMatchStringDataAndProcess(fileName);

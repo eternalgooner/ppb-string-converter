@@ -7,7 +7,7 @@ import java.io.File;
  * @date 27/09/2019
  **/
 
-public class MyFileUtils {
+public class CustomFileUtils {
 
     private static File dataFile;
 
@@ -16,7 +16,7 @@ public class MyFileUtils {
         return dataFile.exists();
     }
 
-    public static File getDataFile() {
+/*    public static File getDataFile() {
         return dataFile;
-    }
+    }*/
 }
