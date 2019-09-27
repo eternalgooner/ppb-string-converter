@@ -1,6 +1,7 @@
 package com.eternalgooner.app;
 
 import com.eternalgooner.utils.CustomFileUtils;
+import com.eternalgooner.validator.ValidateMatchDataFormat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,8 +17,10 @@ import java.nio.file.Paths;
 public class StringConverterApp {
 
     private static final Logger LOGGER = LogManager.getLogger(StringConverterApp.class.getName());
-    public static void main (String[] commandLineArgs){
+    private static final int EXPECTED_MATCH_DATA_SECTIONS = 2;
+    private static final String INVALID = "INVALID";
 
+    public static void main (String[] commandLineArgs){
         if(commandLineArgs != null){
             LOGGER.debug("commandLineArgs not null, continue with app flow");
             new StringConverterApp().continueWithAppFlow(commandLineArgs);
@@ -38,16 +41,30 @@ public class StringConverterApp {
 
     private void streamMatchStringDataAndProcess(String matchDataFile) {
         if(matchDataFile != null){
+            LOGGER.info("try to stream each line in the file");
             try {
                 Files.lines(Paths.get(matchDataFile))
-                        .forEach(line -> processMatchData(line));
+                        .forEach(line -> validateMatchDataSections(line));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void processMatchData(String line) {
+    private void validateMatchDataSections(String line) {
+        int matchDataSections = ValidateMatchDataFormat.getMatchDataSections(line);
 
+        if(matchDataSections == EXPECTED_MATCH_DATA_SECTIONS){
+            LOGGER.info("matchDataSections == 2");
+            validateMatchPeriod(line);
+        }else{
+            LOGGER.info(INVALID);
+        }
+
+    }
+
+    private void validateMatchPeriod(String line) {
+        boolean isValidMatchPeriod = ValidateMatchDataFormat.validateMatchPeriod();
+        LOGGER.info("isValidMatchPeriod: {}", isValidMatchPeriod);
     }
 }

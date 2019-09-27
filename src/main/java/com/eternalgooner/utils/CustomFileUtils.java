@@ -9,14 +9,9 @@ import java.io.File;
 
 public class CustomFileUtils {
 
-    private static File dataFile;
-
     public static boolean checkIfValidFile(String fileName) {
-        dataFile = new File(fileName);
+        File dataFile = new File(fileName);
         return dataFile.exists();
     }
 
-/*    public static File getDataFile() {
-        return dataFile;
-    }*/
 }
