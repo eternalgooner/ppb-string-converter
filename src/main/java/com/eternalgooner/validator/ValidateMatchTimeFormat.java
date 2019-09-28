@@ -21,19 +21,19 @@ public class ValidateMatchTimeFormat {
     public static boolean validateMatchTime(String line) {
         String matchTime = getMatchTimeFromMatchDataSections(line);
         boolean isValidMatchTime = applyValidTimeRegex(matchTime);
-        LOGGER.info("regex applied, isValidMatchTime: {}", isValidMatchTime);
+        LOGGER.debug("regex applied, isValidMatchTime: {}", isValidMatchTime);
         return isValidMatchTime;
     }
 
     private static boolean applyValidTimeRegex(String matchTime) {
-        final Pattern pattern = Pattern.compile("^(\\d?\\d:\\d{2}.\\d{3})");
-        final Matcher matcher = pattern.matcher(matchTime);
+        final Pattern expectedMatchTimePattern = Pattern.compile("^(\\d?\\d:[0-5]\\d*\\d.\\d{3})");
+        final Matcher matcher = expectedMatchTimePattern.matcher(matchTime);
         return matcher.matches();
     }
 
     private static String getMatchTimeFromMatchDataSections(String line) {
         String[] matchDataSections = line.split(SPACE);
-        LOGGER.info("returning matchTime: {}", matchDataSections[MATCH_TIME]);
+        LOGGER.debug("returning matchTime: {}", matchDataSections[MATCH_TIME]);
         return matchDataSections[MATCH_TIME];
     }
 }

@@ -6,5 +6,5 @@ package com.eternalgooner.matchperiods;
  **/
 
 public interface MatchPeriod {
-    String calculateMatchTime();
+    String calculateOutputMatchTime(String matchTime);
 }

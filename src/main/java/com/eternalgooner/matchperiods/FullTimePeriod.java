@@ -5,9 +5,9 @@ package com.eternalgooner.matchperiods;
  * @date 27/09/2019
  **/
 
-public class PreMatchPeriod implements MatchPeriod {
+public class FullTimePeriod implements MatchPeriod {
 
-    private static final String OUTPUT_MATCH_TIME = "00:00 – PRE_MATCH";
+    private static final String OUTPUT_MATCH_TIME = "00:00 – FULL_TIME";
 
     @Override
     public String calculateOutputMatchTime(String matchTime) {

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * @date 27/09/2019
  **/
 
-public class ValidateMatchDataFormat {
+public class ValidateMatchPeriodFormat {
 
     private static final String SPACE = " ";
     private static String[] matchDataSections;
@@ -22,7 +22,7 @@ public class ValidateMatchDataFormat {
 
     public static int getMatchDataSections(String matchData){
         matchDataSections = matchData.split(SPACE);
-        LOGGER.info("returning matchDataSections of size: {}", matchDataSections.length);
+        LOGGER.debug("returning matchDataSections of size: {}", matchDataSections.length);
         return matchDataSections.length;
     }
 
@@ -32,7 +32,7 @@ public class ValidateMatchDataFormat {
         List<String> inputMatchPeriods = inputMatchPeriodsWithoutBrackets.stream()
                                                 .map(entry -> entry.getMatchPeriod())
                                                 .collect(Collectors.toList());
-        LOGGER.info("checking if matchPeriod {} is present in predefined enum list {}", matchPeriod, inputMatchPeriods);
+        LOGGER.debug("checking if matchPeriod {} is present in predefined enum list {}", matchPeriod, inputMatchPeriods);
         return inputMatchPeriods.contains(matchPeriod);
     }
 }
