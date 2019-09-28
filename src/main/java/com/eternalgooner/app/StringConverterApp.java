@@ -2,6 +2,7 @@ package com.eternalgooner.app;
 
 import com.eternalgooner.utils.CustomFileUtils;
 import com.eternalgooner.validator.ValidateMatchDataFormat;
+import com.eternalgooner.validator.ValidateMatchTimeFormat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -52,6 +53,7 @@ public class StringConverterApp {
     }
 
     private void validateMatchDataSections(String line) {
+        LOGGER.info("validating line: {}", line);
         int matchDataSections = ValidateMatchDataFormat.getMatchDataSections(line);
 
         if(matchDataSections == EXPECTED_MATCH_DATA_SECTIONS){
@@ -66,5 +68,20 @@ public class StringConverterApp {
     private void validateMatchPeriod(String line) {
         boolean isValidMatchPeriod = ValidateMatchDataFormat.validateMatchPeriod();
         LOGGER.info("isValidMatchPeriod: {}", isValidMatchPeriod);
+        if(isValidMatchPeriod){
+            validateMatchTime(line);
+        }
+    }
+
+    private void validateMatchTime(String line) {
+        boolean isValidMatchTime = ValidateMatchTimeFormat.validateMatchTime(line);
+        LOGGER.info("isValidMatchTime: {}", isValidMatchTime);
+        if(isValidMatchTime){
+            convertInputStringToExpectedOutput(line);
+        }
+    }
+
+    private void convertInputStringToExpectedOutput(String line) {
+
     }
 }
