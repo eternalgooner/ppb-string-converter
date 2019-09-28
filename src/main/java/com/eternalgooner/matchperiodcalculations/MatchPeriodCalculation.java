@@ -1,10 +1,10 @@
-package com.eternalgooner.matchperiods;
+package com.eternalgooner.matchperiodcalculations;
 
 /**
  * @author David Mackessy
  * @date 27/09/2019
  **/
 
-public interface MatchPeriod {
+public interface MatchPeriodCalculation {
     String calculateOutputMatchTime(String matchTime);
 }

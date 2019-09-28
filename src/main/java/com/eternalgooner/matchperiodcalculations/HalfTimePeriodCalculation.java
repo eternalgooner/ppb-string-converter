@@ -1,11 +1,11 @@
-package com.eternalgooner.matchperiods;
+package com.eternalgooner.matchperiodcalculations;
 
 /**
  * @author David Mackessy
  * @date 27/09/2019
  **/
 
-public class HalfTimePeriod implements MatchPeriod {
+public class HalfTimePeriodCalculation implements MatchPeriodCalculation {
 
     private static final String OUTPUT_MATCH_TIME = "00:00 – HALF_TIME";
 
