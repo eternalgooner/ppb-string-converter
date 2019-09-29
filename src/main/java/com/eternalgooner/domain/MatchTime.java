@@ -29,7 +29,6 @@ public abstract class MatchTime {
         this.milliseconds = MatchTimeUtils.getMatchMillisecondsFromMatchTime(inputMatchTime);
         this.matchPeriod = matchPeriod;
         this.hasExtraSecondFromRoundedMilliseconds = MatchTimeUtils.millisecondsGreaterThanOrEqualTo500(inputMatchTime);
-        //this.hasAddedTime = addedTimeApplies();
         calculateAddedTime();
     }
 

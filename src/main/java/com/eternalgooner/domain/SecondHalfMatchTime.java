@@ -30,21 +30,4 @@ public class SecondHalfMatchTime extends MatchTime {
             addedTime = new AddedTime(addedMinutes, seconds);
         }
     }
-
-/*    @Override
-    protected boolean addedTimeApplies() {
-        if(minutes < _90){
-            LOGGER.debug(NO_ADDED_TIME_DETECTED);
-            return false;
-        }else if(addedTimeDetected()){
-            LOGGER.debug(ADDED_TIME_DETECTED);
-            return true;
-        }
-        LOGGER.error("If this flow has been reached then the logic to calculate second half added time is incorrect");
-        return false;
-    }
-
-    private boolean addedTimeDetected() {
-       return (minutes > _90) || ((minutes == _90) && ((seconds > 0) || (milliseconds > 0)));
-    }*/
 }
