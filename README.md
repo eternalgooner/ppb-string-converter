@@ -18,7 +18,7 @@ The below entries are strings and show the conversion from input to expected out
 | [PM] -10:00.000   | INVALID        |
 | FOO   | INVALID        |
 
-#How to use it?
+# How to use it?
 1. In the GitHub repository you can download the jar file (StringConverter-1.0.jar) from the src\target location \
 or use think link: https://github.com/eternalgooner/ppb-string-converter/tree/master/target
 
@@ -32,29 +32,29 @@ or use think link: https://github.com/eternalgooner/ppb-string-converter/tree/ma
 
 6. As the command above shows, the program takes 1 argument which is the path to the input file
 
-#Logging
+# Logging
 There are 2 main forms of logging implemented
 - **Console**: When run in the console, all INFO level messages are printed to the screen
 - **Log file**: When the program is run, it will generate a log folder in the same directory as the jar file. In this directory will be a log file, logging all DEBUG & INFO messages. 
 
-#Design 
-##Patterns used
+# Design 
+## Patterns used
 - [x] Factory
 - [x] Strategy
-##Diagrams
+## Diagrams
 ![flow chart](https://github.com/eternalgooner/ppb-string-converter/tree/master/images/flowchart-sample.png)
-#Testing
-##Java version compatibility
+# Testing
+## Java version compatibility
 The program has been tested running on OpenJDK 12 and Java 8 runtimes.
 
-##OS compatibility
+## OS compatibility
 The program has been tested running on:
 - Windows 10
 - Linux (CentOS)
 
-##Unit testing
+## Unit testing
 
-##Test data
+## Test data
 you can save this test data into a .txt file and use it with the program
 
 [PM] 0:00.000\
@@ -71,7 +71,7 @@ you can save this test data into a .txt file and use it with the program
 [PM] -10:00.000\
 FOO
 
-#Notes
+# Notes
 - The assumption has been made that only normal league matches are allowed (90 mins). i.e. no extra time periods (120 mins)
 
 - 
