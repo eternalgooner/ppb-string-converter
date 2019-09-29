@@ -24,6 +24,10 @@ public class MatchPeriodFactory {
         matchPeriodMap.put(InputMatchPeriod.FT.getMatchPeriod(), new FullTimePeriodCalculation());
     }
 
+    private MatchPeriodFactory() {
+        throw new IllegalStateException("Factory class");
+    }
+
     public static Optional<MatchPeriodCalculation> getMatchPeriod(String matchPeriod) {
         return Optional.ofNullable(matchPeriodMap.get(matchPeriod));
     }

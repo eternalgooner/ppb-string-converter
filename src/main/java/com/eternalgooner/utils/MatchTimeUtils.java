@@ -13,6 +13,10 @@ public class MatchTimeUtils {
     private static final String DOT = "\\.";
     private static final Logger LOGGER = LogManager.getLogger(MatchTimeUtils.class.getName());
 
+    private MatchTimeUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static boolean millisecondsGreaterThanOrEqualTo500(String matchTime) {
         LOGGER.debug("rounding milliseconds from match time: {}", matchTime);
 

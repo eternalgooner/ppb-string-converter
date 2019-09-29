@@ -17,6 +17,10 @@ public class ValidateMatchTimeFormat {
     private static final String SPACE = " ";
     private static final int MATCH_TIME = 1;
 
+    private ValidateMatchTimeFormat() {
+        throw new IllegalStateException("Validator class");
+    }
+
     public static boolean validateMatchTime(String line) {
         String matchTime = getMatchTimeFromMatchDataSections(line);
         boolean isValidMatchTime = applyValidTimeRegex(matchTime);

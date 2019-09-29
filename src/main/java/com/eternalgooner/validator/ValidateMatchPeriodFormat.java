@@ -19,6 +19,10 @@ public class ValidateMatchPeriodFormat {
     private static String[] matchDataSections;
     private static final Logger LOGGER = LogManager.getLogger(ValidateMatchPeriodFormat.class.getName());
 
+    private ValidateMatchPeriodFormat() {
+        throw new IllegalStateException("Validator class");
+    }
+
     public static int getMatchDataSections(String matchData){
         matchDataSections = matchData.split(SPACE);
         LOGGER.debug("returning matchDataSections of size: {}", matchDataSections.length);
@@ -29,7 +33,7 @@ public class ValidateMatchPeriodFormat {
         String matchPeriod = matchDataSections[0];
         List<InputMatchPeriod> inputMatchPeriodsWithoutBrackets = Arrays.asList(InputMatchPeriod.values());
         List<String> inputMatchPeriods = inputMatchPeriodsWithoutBrackets.stream()
-                                                .map(entry -> entry.getMatchPeriod())
+                                                .map(InputMatchPeriod::getMatchPeriod)
                                                 .collect(Collectors.toList());
         LOGGER.debug("checking if matchPeriod {} is present in predefined enum list {}", matchPeriod, inputMatchPeriods);
         return inputMatchPeriods.contains(matchPeriod);

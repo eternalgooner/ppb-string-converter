@@ -6,14 +6,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Optional;
 
-public class StringConverterUtils {
+public class StringConverter {
 
     private final String matchPeriod;
     private final String matchTime;
     private static final String SPACE = " ";
-    private static final Logger LOGGER = LogManager.getLogger(StringConverterUtils.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(StringConverter.class.getName());
 
-    public StringConverterUtils(String inputLine) {
+    public StringConverter(String inputLine) {
         matchPeriod = inputLine.split(SPACE)[0];
         matchTime = inputLine.split(SPACE)[1];
     }

@@ -13,15 +13,12 @@ import org.apache.logging.log4j.Logger;
 
 public class FirstHalfPeriodCalculation implements MatchPeriodCalculation {
 
-    //private boolean addExtraSecondFromMsRounding;
     private MatchTime newMatchTime;
     private static final Logger LOGGER = LogManager.getLogger(FirstHalfPeriodCalculation.class.getName());
 
     @Override
     public String calculateOutputMatchTime(String matchTime) {
         LOGGER.debug("rounding milliseconds to check whether to add extra second or not");
-        //addExtraSecondFromMsRounding = MatchTimeUtils.millisecondsGreaterThanOrEqualTo500(matchTime);
-        //LOGGER.debug("add extra second: {}", addExtraSecondFromMsRounding);
         newMatchTime = new FirstHalfMatchTime(matchTime, OutputMatchPeriod.FIRST_HALF);
         return getOutputMatchFormat(newMatchTime);
     }
