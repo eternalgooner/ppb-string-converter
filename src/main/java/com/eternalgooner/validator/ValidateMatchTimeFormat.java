@@ -21,8 +21,8 @@ public class ValidateMatchTimeFormat {
         throw new IllegalStateException("Validator class");
     }
 
-    public static boolean validateMatchTime(String line) {
-        String matchTime = getMatchTimeFromMatchDataSections(line);
+    public static boolean validateMatchTime(String inputLine) {
+        String matchTime = getMatchTimeFromMatchDataSections(inputLine);
         boolean isValidMatchTime = applyValidTimeRegex(matchTime);
         LOGGER.debug("regex applied, isValidMatchTime: {}", isValidMatchTime);
         return isValidMatchTime;
@@ -34,8 +34,8 @@ public class ValidateMatchTimeFormat {
         return matcher.matches();
     }
 
-    private static String getMatchTimeFromMatchDataSections(String line) {
-        String[] matchDataSections = line.split(SPACE);
+    private static String getMatchTimeFromMatchDataSections(String inputLine) {
+        String[] matchDataSections = inputLine.split(SPACE);
         LOGGER.debug("returning matchTime: {}", matchDataSections[MATCH_TIME]);
         return matchDataSections[MATCH_TIME];
     }

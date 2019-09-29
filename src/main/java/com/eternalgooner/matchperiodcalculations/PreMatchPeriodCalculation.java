@@ -7,7 +7,7 @@ package com.eternalgooner.matchperiodcalculations;
 
 public class PreMatchPeriodCalculation implements MatchPeriodCalculation {
 
-    private static final String OUTPUT_MATCH_TIME = "00:00 – PRE_MATCH";
+    private static final String OUTPUT_MATCH_TIME = "00:00 - PRE_MATCH";
 
     @Override
     public String calculateOutputMatchTime(String matchTime) {
