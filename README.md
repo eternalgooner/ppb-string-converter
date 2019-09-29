@@ -37,10 +37,12 @@ There are 2 main forms of logging implemented
 - **Console**: When run in the console, all INFO level messages are printed to the screen
 - **Log file**: When the program is run, it will generate a log folder in the same directory as the jar file. In this directory will be a log file, logging all DEBUG & INFO messages. 
 
-#Design patterns used
+#Design 
+##Patterns used
 - [x] Factory
 - [x] Strategy
-
+##Diagrams
+![flow chart](https://github.com/eternalgooner/ppb-string-converter/tree/master/images/flowchart-sample.png)
 #Testing
 ##Java version compatibility
 The program has been tested running on OpenJDK 12 and Java 8 runtimes.
@@ -51,7 +53,6 @@ The program has been tested running on:
 - Linux (CentOS)
 
 ##Unit testing
-
 
 ##Test data
 you can save this test data into a .txt file and use it with the program
@@ -68,7 +69,7 @@ you can save this test data into a .txt file and use it with the program
 90:00\
 [H3] 90:00.000\
 [PM] -10:00.000\
-FOO\
+FOO
 
 #Notes
 - The assumption has been made that only normal league matches are allowed (90 mins). i.e. no extra time periods (120 mins)
