@@ -3,4 +3,6 @@
 /idea
 analysis.xlsx
 /log
-/target
+!/target
+/target/*
+!/target/StringConverter-1.0.jar
