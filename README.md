@@ -43,6 +43,7 @@ There are 2 main forms of logging implemented
 - [x] Strategy
 ## Diagrams
 ![flow chart](https://github.com/eternalgooner/ppb-string-converter/tree/master/images/flowchart-sample.png)
+![flow chart](flowchart-sample.png)
 # Testing
 ## Java version compatibility
 The program has been tested running on OpenJDK 12 and Java 8 runtimes.
