@@ -7,7 +7,7 @@ package com.eternalgooner.matchperiodcalculations;
 
 public class FullTimePeriodCalculation implements MatchPeriodCalculation {
 
-    private static final String OUTPUT_MATCH_TIME = "90:00 – FULL_TIME";
+    private static final String OUTPUT_MATCH_TIME = "90:00 - FULL_TIME";
 
     @Override
     public String calculateOutputMatchTime(String matchTime) {

@@ -2,6 +2,7 @@ package com.eternalgooner;
 
 import com.eternalgooner.utils.CustomFileUtils;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -13,15 +14,13 @@ public class CustomFileUtilsTest {
 
     @Test
     public void validFileTest(){
-
-        boolean isValidFile = CustomFileUtils.checkIfValidFile("isValidFile.txt");
+        boolean isValidFile = CustomFileUtils.checkIfValidFile("src/test/resources/isValidFile.txt");
         assertEquals(true, isValidFile);
     }
 
     @Test
     public void invalidFileTest(){
-
-        boolean isInvalidFile = CustomFileUtils.checkIfValidFile("isInvalidFile.txt");
+        boolean isInvalidFile = CustomFileUtils.checkIfValidFile("src/test/resources/isInvalidFile.txt");
         assertEquals(false, isInvalidFile);
     }
 }

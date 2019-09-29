@@ -2,6 +2,8 @@ package com.eternalgooner.factory;
 
 import com.eternalgooner.enums.InputMatchPeriod;
 import com.eternalgooner.matchperiodcalculations.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +16,7 @@ import java.util.Optional;
 
 public class MatchPeriodFactory {
 
+    private static final Logger LOGGER = LogManager.getLogger(MatchPeriodFactory.class.getName());
     private static Map<String, MatchPeriodCalculation> matchPeriodMap = new HashMap<>();
 
     static {
@@ -29,6 +32,7 @@ public class MatchPeriodFactory {
     }
 
     public static Optional<MatchPeriodCalculation> getMatchPeriod(String matchPeriod) {
+        LOGGER.debug("returning {} match period from factory", matchPeriod);
         return Optional.ofNullable(matchPeriodMap.get(matchPeriod));
     }
 }

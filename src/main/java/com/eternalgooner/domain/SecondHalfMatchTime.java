@@ -11,8 +11,10 @@ import org.apache.logging.log4j.Logger;
 
 public class SecondHalfMatchTime extends MatchTime {
 
-    public static final int _90 = 90;
+    private static final int _90 = 90;
     private static final Logger LOGGER = LogManager.getLogger(SecondHalfMatchTime.class.getName());
+    private static final String NO_ADDED_TIME_DETECTED = "no added time detected";
+    private static final String ADDED_TIME_DETECTED = "added time detected";
 
     public SecondHalfMatchTime(String inputMatchTime, OutputMatchPeriod matchPeriod) {
         super(inputMatchTime, matchPeriod);
@@ -20,7 +22,7 @@ public class SecondHalfMatchTime extends MatchTime {
 
     @Override
     protected void calculateAddedTime() {
-        if(addedTimeApplies()){
+        if(addedTimeApplies(_90)){
             int addedMinutes = minutes - _90;
             if(hasExtraSecondFromRoundedMilliseconds){
                 ++seconds;
@@ -29,16 +31,20 @@ public class SecondHalfMatchTime extends MatchTime {
         }
     }
 
-    @Override
+/*    @Override
     protected boolean addedTimeApplies() {
         if(minutes < _90){
+            LOGGER.debug(NO_ADDED_TIME_DETECTED);
             return false;
-        }else if(minutes > _90){
-            return true;
-        }else if((minutes == _90) && ((seconds > 0) || (milliseconds > 0))){
+        }else if(addedTimeDetected()){
+            LOGGER.debug(ADDED_TIME_DETECTED);
             return true;
         }
         LOGGER.error("If this flow has been reached then the logic to calculate second half added time is incorrect");
         return false;
     }
+
+    private boolean addedTimeDetected() {
+       return (minutes > _90) || ((minutes == _90) && ((seconds > 0) || (milliseconds > 0)));
+    }*/
 }
