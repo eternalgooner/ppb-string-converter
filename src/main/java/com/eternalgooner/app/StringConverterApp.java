@@ -6,7 +6,6 @@ import com.eternalgooner.validator.ValidateMatchPeriodFormat;
 import com.eternalgooner.validator.ValidateMatchTimeFormat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -23,7 +22,7 @@ public class StringConverterApp {
     private static final String INVALID = "INVALID";
 
     public static void main (String[] commandLineArgs){
-        if(commandLineArgs != null){
+        if(commandLineArgs.length != 0){
             LOGGER.debug("commandLineArgs not null, continue with app flow");
             new StringConverterApp().continueWithAppFlow(commandLineArgs);
         }else{
@@ -32,8 +31,7 @@ public class StringConverterApp {
     }
 
     private void continueWithAppFlow(String[] commandLineArgs) {
-        String fileName = commandLineArgs[0];//TODO revert
-        //String fileName = "C:\\dev\\PPB\\inputs Jr Java Dev coding assessment[9244].txt";
+        String fileName = commandLineArgs[0];
         boolean isValidFile = CustomFileUtils.checkIfValidFile(fileName);
         if(isValidFile){
             LOGGER.debug("valid file has been identified, proceeding to next step");
@@ -54,6 +52,8 @@ public class StringConverterApp {
     }
 
     private void validateMatchDataSections(String inputLine) {
+        LOGGER.debug(String.format("%n"));
+        LOGGER.debug("***********************************************************************");
         LOGGER.debug("**** validating line: {} ****", inputLine);
         int matchDataSections = ValidateMatchPeriodFormat.getMatchDataSections(inputLine);
 
@@ -63,7 +63,6 @@ public class StringConverterApp {
         }else{
             LOGGER.info(INVALID);
         }
-
     }
 
     private void validateMatchPeriod(String inputLine) {

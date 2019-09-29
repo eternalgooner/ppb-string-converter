@@ -2,6 +2,8 @@ package com.eternalgooner.domain;
 
 import com.eternalgooner.enums.OutputMatchPeriod;
 import com.eternalgooner.utils.MatchTimeUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
@@ -19,6 +21,7 @@ public abstract class MatchTime {
     protected boolean hasAddedTime;
     protected boolean hasExtraSecondFromRoundedMilliseconds;
     protected AddedTime addedTime;
+    private static final Logger LOGGER = LogManager.getLogger(MatchTime.class.getName());
 
     public MatchTime(String inputMatchTime, OutputMatchPeriod matchPeriod){
         this.minutes = MatchTimeUtils.getMatchMinutesFromMatchTime(inputMatchTime);
@@ -26,13 +29,28 @@ public abstract class MatchTime {
         this.milliseconds = MatchTimeUtils.getMatchMillisecondsFromMatchTime(inputMatchTime);
         this.matchPeriod = matchPeriod;
         this.hasExtraSecondFromRoundedMilliseconds = MatchTimeUtils.millisecondsGreaterThanOrEqualTo500(inputMatchTime);
-        this.hasAddedTime = addedTimeApplies();
+        //this.hasAddedTime = addedTimeApplies();
         calculateAddedTime();
     }
 
     protected abstract void calculateAddedTime();
 
-    protected abstract boolean addedTimeApplies();
+    protected boolean addedTimeApplies(int matchMinutes) {
+        if(minutes < matchMinutes){
+            LOGGER.debug("no added time detected");
+            return false;
+        }else if(addedTimeDetected(matchMinutes)){
+            LOGGER.debug("added time detected");
+            hasAddedTime = true;
+            return true;
+        }
+        LOGGER.error("If this flow has been reached then the logic to calculate first half added time is incorrect");
+        return false;
+    }
+
+    private boolean addedTimeDetected(int matchMins) {
+        return (minutes > matchMins) || ((minutes == matchMins) && ((seconds > 0) || (milliseconds > 0)));
+    }
 
     public int getMinutes() {
         return minutes;

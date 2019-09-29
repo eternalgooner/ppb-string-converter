@@ -23,10 +23,10 @@ public class MatchTimeUtils {
         int milliseconds = Integer.parseInt(matchTime.split(DOT)[1]);
         LOGGER.debug("milliseconds from match time: {}", milliseconds);
         if(milliseconds >= 500){
-            LOGGER.debug("milliseconds >= 500 so return true");
+            LOGGER.debug("milliseconds >= 500 so round up");
             return true;
         }
-        LOGGER.debug("milliseconds < 500 so return false");
+        LOGGER.debug("milliseconds < 500 so don't round up");
         return false;
     }
 
