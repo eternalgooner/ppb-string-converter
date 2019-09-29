@@ -9,9 +9,12 @@ import java.io.File;
 
 public class CustomFileUtils {
 
+    private CustomFileUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static boolean checkIfValidFile(String fileName) {
         File dataFile = new File(fileName);
         return dataFile.exists();
     }
-
 }

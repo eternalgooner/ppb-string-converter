@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author David Mackessy
  * @date 28/09/2019
  **/
+
 public class MatchStringRegexTest {
 
     //valid times
@@ -29,6 +30,7 @@ public class MatchStringRegexTest {
     private final String INVALID_TIME_LETTER_PRESENT = "4t:00.001";
     private final String INVALID_TIME_NEGATIVE_NUMBER = "-90:00.908";
 
+    // expected formats e.g. 00:00.000 / 1:44.123 / 55:56.999
     private final Pattern expectedMatchTimePattern = Pattern.compile("^(\\d?\\d:[0-5]\\d*\\d.\\d{3})");
 
     @Test

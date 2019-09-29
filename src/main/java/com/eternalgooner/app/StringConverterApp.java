@@ -1,7 +1,8 @@
 package com.eternalgooner.app;
 
+import com.eternalgooner.utils.StringConverter;
 import com.eternalgooner.utils.CustomFileUtils;
-import com.eternalgooner.validator.ValidateMatchDataFormat;
+import com.eternalgooner.validator.ValidateMatchPeriodFormat;
 import com.eternalgooner.validator.ValidateMatchTimeFormat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,57 +32,64 @@ public class StringConverterApp {
     }
 
     private void continueWithAppFlow(String[] commandLineArgs) {
-        //String fileName = commandLineArgs[0];//TODO revert
-        String fileName = "C:\\dev\\PPB\\inputs Jr Java Dev coding assessment[9244].txt";
+        String fileName = commandLineArgs[0];//TODO revert
+        //String fileName = "C:\\dev\\PPB\\inputs Jr Java Dev coding assessment[9244].txt";
         boolean isValidFile = CustomFileUtils.checkIfValidFile(fileName);
         if(isValidFile){
-            LOGGER.info("valid file has been identified, proceeding to next step");
+            LOGGER.debug("valid file has been identified, proceeding to next step");
             streamMatchStringDataAndProcess(fileName);
         }
     }
 
     private void streamMatchStringDataAndProcess(String matchDataFile) {
         if(matchDataFile != null){
-            LOGGER.info("try to stream each line in the file");
+            LOGGER.debug("try to stream each line in the file");
             try {
                 Files.lines(Paths.get(matchDataFile))
-                        .forEach(line -> validateMatchDataSections(line));
+                        .forEach(this::validateMatchDataSections);
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error("IOException caught: {}", e);
             }
         }
     }
 
-    private void validateMatchDataSections(String line) {
-        LOGGER.info("validating line: {}", line);
-        int matchDataSections = ValidateMatchDataFormat.getMatchDataSections(line);
+    private void validateMatchDataSections(String inputLine) {
+        LOGGER.debug("**** validating line: {} ****", inputLine);
+        int matchDataSections = ValidateMatchPeriodFormat.getMatchDataSections(inputLine);
 
         if(matchDataSections == EXPECTED_MATCH_DATA_SECTIONS){
-            LOGGER.info("matchDataSections == 2");
-            validateMatchPeriod(line);
+            LOGGER.debug("matchDataSections == 2");
+            validateMatchPeriod(inputLine);
         }else{
             LOGGER.info(INVALID);
         }
 
     }
 
-    private void validateMatchPeriod(String line) {
-        boolean isValidMatchPeriod = ValidateMatchDataFormat.validateMatchPeriod();
-        LOGGER.info("isValidMatchPeriod: {}", isValidMatchPeriod);
+    private void validateMatchPeriod(String inputLine) {
+        boolean isValidMatchPeriod = ValidateMatchPeriodFormat.validateMatchPeriod();
+        LOGGER.debug("isValidMatchPeriod: {}", isValidMatchPeriod);
         if(isValidMatchPeriod){
-            validateMatchTime(line);
+            validateMatchTime(inputLine);
+        }else{
+            LOGGER.info(INVALID);
         }
     }
 
     private void validateMatchTime(String line) {
         boolean isValidMatchTime = ValidateMatchTimeFormat.validateMatchTime(line);
-        LOGGER.info("isValidMatchTime: {}", isValidMatchTime);
         if(isValidMatchTime){
+            LOGGER.debug("isValidMatchTime: {}, convert string to expected output format", isValidMatchTime);
             convertInputStringToExpectedOutput(line);
+        }else {
+            LOGGER.debug("isValidMatchTime: {}, stop processing, ouput INVALID", isValidMatchTime);
+            LOGGER.info(INVALID);
         }
     }
 
     private void convertInputStringToExpectedOutput(String line) {
-
+        StringConverter stringConverter = new StringConverter(line);
+        String outputFormat = stringConverter.getOutputFormat();
+        LOGGER.info(outputFormat);
     }
 }

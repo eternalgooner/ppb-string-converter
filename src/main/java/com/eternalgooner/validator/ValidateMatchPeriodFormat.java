@@ -1,6 +1,5 @@
 package com.eternalgooner.validator;
 
-import com.eternalgooner.app.StringConverterApp;
 import com.eternalgooner.enums.InputMatchPeriod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,15 +13,19 @@ import java.util.stream.Collectors;
  * @date 27/09/2019
  **/
 
-public class ValidateMatchDataFormat {
+public class ValidateMatchPeriodFormat {
 
     private static final String SPACE = " ";
     private static String[] matchDataSections;
-    private static final Logger LOGGER = LogManager.getLogger(StringConverterApp.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(ValidateMatchPeriodFormat.class.getName());
+
+    private ValidateMatchPeriodFormat() {
+        throw new IllegalStateException("Validator class");
+    }
 
     public static int getMatchDataSections(String matchData){
         matchDataSections = matchData.split(SPACE);
-        LOGGER.info("returning matchDataSections of size: {}", matchDataSections.length);
+        LOGGER.debug("returning matchDataSections of size: {}", matchDataSections.length);
         return matchDataSections.length;
     }
 
@@ -30,9 +33,9 @@ public class ValidateMatchDataFormat {
         String matchPeriod = matchDataSections[0];
         List<InputMatchPeriod> inputMatchPeriodsWithoutBrackets = Arrays.asList(InputMatchPeriod.values());
         List<String> inputMatchPeriods = inputMatchPeriodsWithoutBrackets.stream()
-                                                .map(entry -> entry.getMatchPeriod())
+                                                .map(InputMatchPeriod::getMatchPeriod)
                                                 .collect(Collectors.toList());
-        LOGGER.info("checking if matchPeriod {} is present in predefined enum list {}", matchPeriod, inputMatchPeriods);
+        LOGGER.debug("checking if matchPeriod {} is present in predefined enum list {}", matchPeriod, inputMatchPeriods);
         return inputMatchPeriods.contains(matchPeriod);
     }
 }
