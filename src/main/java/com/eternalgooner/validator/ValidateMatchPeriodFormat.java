@@ -1,6 +1,5 @@
 package com.eternalgooner.validator;
 
-import com.eternalgooner.app.StringConverterApp;
 import com.eternalgooner.enums.InputMatchPeriod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +17,7 @@ public class ValidateMatchPeriodFormat {
 
     private static final String SPACE = " ";
     private static String[] matchDataSections;
-    private static final Logger LOGGER = LogManager.getLogger(StringConverterApp.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(ValidateMatchPeriodFormat.class.getName());
 
     public static int getMatchDataSections(String matchData){
         matchDataSections = matchData.split(SPACE);

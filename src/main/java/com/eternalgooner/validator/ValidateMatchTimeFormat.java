@@ -1,6 +1,5 @@
 package com.eternalgooner.validator;
 
-import com.eternalgooner.app.StringConverterApp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class ValidateMatchTimeFormat {
 
-    private static final Logger LOGGER = LogManager.getLogger(StringConverterApp.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(ValidateMatchTimeFormat.class.getName());
     private static final String SPACE = " ";
     private static final int MATCH_TIME = 1;
 

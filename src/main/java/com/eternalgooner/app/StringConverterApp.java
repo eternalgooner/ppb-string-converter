@@ -1,6 +1,6 @@
 package com.eternalgooner.app;
 
-import com.eternalgooner.StringConverter;
+import com.eternalgooner.utils.StringConverterUtils;
 import com.eternalgooner.utils.CustomFileUtils;
 import com.eternalgooner.validator.ValidateMatchPeriodFormat;
 import com.eternalgooner.validator.ValidateMatchTimeFormat;
@@ -88,7 +88,7 @@ public class StringConverterApp {
     }
 
     private void convertInputStringToExpectedOutput(String line) {
-        StringConverter stringConverter = new StringConverter(line);
+        StringConverterUtils stringConverter = new StringConverterUtils(line);
         String outputFormat = stringConverter.getOutputFormat();
         LOGGER.info(outputFormat);
     }

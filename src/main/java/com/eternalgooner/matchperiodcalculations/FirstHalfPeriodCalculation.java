@@ -1,7 +1,8 @@
 package com.eternalgooner.matchperiodcalculations;
 
-import com.eternalgooner.app.StringConverterApp;
-import com.eternalgooner.utils.MatchTimeUtils;
+import com.eternalgooner.domain.FirstHalfMatchTime;
+import com.eternalgooner.domain.MatchTime;
+import com.eternalgooner.enums.OutputMatchPeriod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,15 +13,35 @@ import org.apache.logging.log4j.Logger;
 
 public class FirstHalfPeriodCalculation implements MatchPeriodCalculation {
 
-    private static final String OUTPUT_MATCH_TIME = "00:00 – FIRST_HALF";
-
-    private boolean addExtraMinuteFromMsRounding;
+    //private boolean addExtraSecondFromMsRounding;
+    private MatchTime newMatchTime;
     private static final Logger LOGGER = LogManager.getLogger(FirstHalfPeriodCalculation.class.getName());
 
     @Override
     public String calculateOutputMatchTime(String matchTime) {
-        addExtraMinuteFromMsRounding = MatchTimeUtils.roundMilliseconds(matchTime);
-        return OUTPUT_MATCH_TIME;
+        LOGGER.debug("rounding milliseconds to check whether to add extra second or not");
+        //addExtraSecondFromMsRounding = MatchTimeUtils.millisecondsGreaterThanOrEqualTo500(matchTime);
+        //LOGGER.debug("add extra second: {}", addExtraSecondFromMsRounding);
+        newMatchTime = new FirstHalfMatchTime(matchTime, OutputMatchPeriod.FIRST_HALF);
+        return getOutputMatchFormat(newMatchTime);
     }
 
+    private String getOutputMatchFormat(MatchTime matchTime) {
+        incrementSecondsByOneIfApplicable();
+        if(!matchTime.isHasAddedTime()){
+            return String.format("%02d:%02d - %s", matchTime.getMinutes(), matchTime.getSeconds(), OutputMatchPeriod.FIRST_HALF);
+        }else{
+            return String.format("45:00 +%02d:%02d - %s",
+                    matchTime.getAddedTime().getMinutes(),
+                    matchTime.getAddedTime().getSeconds(),
+                    OutputMatchPeriod.FIRST_HALF);
+        }
+    }
+
+    private void incrementSecondsByOneIfApplicable() {
+        int finalSecondsToUse = newMatchTime.getSeconds();
+        if(newMatchTime.isHasExtraSecondFromRoundedMilliseconds()){
+            newMatchTime.setSeconds(++finalSecondsToUse);
+        }
+    }
 }
