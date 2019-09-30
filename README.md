@@ -29,14 +29,14 @@ or use this link: https://github.com/eternalgooner/ppb-string-converter/tree/mas
 4. Before running the program you need to have an input file containing match data to process. For simplicity you can have this stored in the same directory as the jar file. You can create a file using the test data in the **Test data** section below.
 
 5. Your directory should look like this before the next step:
-![flow chart](images/demo_folder.png)
+![demo_folder](images/demo_folder.png)
 
 6. Enter the command `java -jar StringConverter-1.0.jar C:\dev\inputFile.txt`
 
 7. As the command above shows, the program takes 1 argument which is the path to the input file
 
 8. After running the program you will see the output in the console like below. You will also see the newly-generated log folder containing the full event log.
-![flow chart](images/screen_output_and_log_folder.png)
+![output_and_log](images/screen_output_and_log_folder.png)
 
 # Logging
 There are 2 main forms of logging implemented
@@ -50,7 +50,7 @@ There are 2 main forms of logging implemented
 ## Diagrams
 ### High level flow
 
-![flow chart](images/High_level_flow.png)
+![flow chart](images/high_level_flow.png)
 
 # Testing
 ## Java version compatibility
