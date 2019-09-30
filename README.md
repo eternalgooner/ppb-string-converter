@@ -22,16 +22,16 @@ The below entries are strings and show the conversion from input to expected out
 1. In the GitHub repository you can download the jar file (**StringConverter-1.0.jar**) from the src\target location \
 or use this link: https://github.com/eternalgooner/ppb-string-converter/tree/master/target
 
-2. Save the jar file in your desired location, e.g. C:\dev
+2. Save the jar file in your desired location, e.g. C:\StringConverter
 
-3. Open a command line window and navigate to the location where the jar file is saved, e.g. `cd C:\dev`
+3. Open a command line window and navigate to the location where the jar file is saved, e.g. `cd C:\StringConverter`
 
 4. Before running the program you need to have an input file containing match data to process. For simplicity you can have this stored in the same directory as the jar file. You can create a file using the test data in the **Test data** section below.
 
 5. Your directory should look like this before the next step:
 ![demo_folder](images/demo_folder.png)
 
-6. Enter the command `java -jar StringConverter-1.0.jar C:\dev\inputFile.txt`
+6. Enter the command `java -jar StringConverter-1.0.jar C:\StringConverter\inputFile.txt`
 
 7. As the command above shows, the program takes 1 argument which is the path to the input file
 
