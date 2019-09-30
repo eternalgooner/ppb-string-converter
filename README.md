@@ -35,16 +35,17 @@ or use think link: https://github.com/eternalgooner/ppb-string-converter/tree/ma
 # Logging
 There are 2 main forms of logging implemented
 - **Console**: When run in the console, all INFO level messages are printed to the screen
-- **Log file**: When the program is run, it will generate a log folder in the same directory as the jar file. In this directory will be a log file, logging all DEBUG & INFO messages. 
+- **Log file**: When the program is run, it will generate a log folder in the same directory as the jar file. In this directory will be a log file, logging all DEBUG & INFO messages for a more detailed view of what the application is doing. 
 
 # Design 
 ## Patterns used
 - [x] Factory
 - [x] Strategy
 ## Diagrams
-###High level flow
+### High level flow
 
 ![flow chart](images/High_level_flow.png)
+
 # Testing
 ## Java version compatibility
 The program has been tested running on OpenJDK 12 and Java 8 runtimes.
@@ -55,6 +56,12 @@ The program has been tested running on:
 - Linux (CentOS)
 
 ## Unit testing
+- All classes are covered by unit tests
+- Sonar Lint is used for code coverage and static analysis
+- project structure, showing code coverage and unit tests
+
+![project_structure_code_coverage](images/project_structure_code_coverage.png)
+
 
 ## Test data
 you can save this test data into a .txt file and use it with the program
