@@ -42,7 +42,9 @@ There are 2 main forms of logging implemented
 - [x] Factory
 - [x] Strategy
 ## Diagrams
-![flow chart](images/flowchart-sample.png)
+###High level flow
+
+![flow chart](images/High_level_flow.png)
 # Testing
 ## Java version compatibility
 The program has been tested running on OpenJDK 12 and Java 8 runtimes.
